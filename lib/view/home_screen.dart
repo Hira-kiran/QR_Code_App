@@ -2,43 +2,62 @@ import 'package:flutter/material.dart';
 import 'package:qr_code/constants/colors.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  String data = "";
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          QrImage(
-            data: "1234567890",
-            version: QrVersions.auto,
-            size: 200.0,
-          ),
-          Container(
-            height: 40,
-            width: 200,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              color: AppColors.greyClr,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            QrImage(
+              data: data,
+              version: QrVersions.auto,
+              size: 200.0,
+              backgroundColor: Colors.white,
             ),
-            child: TextFormField(
-              decoration: const InputDecoration(
-                  hintText: "Type the Data", border: InputBorder.none),
+            const SizedBox(
+              height: 15,
             ),
-          ),
-          Container(
-            height: 50,
-            width: 200,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              color: AppColors.greenClr,
+            Container(
+              height: 40,
+              width: 200,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: AppColors.greyClr,
+              ),
+              child: TextFormField(
+                decoration: const InputDecoration(
+                    hintText: "Type the Data", border: InputBorder.none),
+                onChanged: (value) {
+                  setState(() {
+                    data = value;
+                  });
+                },
+              ),
             ),
-            child: const Text("Generate QR Code"),
-          ),
-        ],
+            const SizedBox(
+              height: 15,
+            ),
+            Container(
+              height: 40,
+              width: 200,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: AppColors.greenClr,
+              ),
+              child: const Center(child: Text("Generate QR Code")),
+            ),
+          ],
+        ),
       ),
     );
   }
