@@ -1,8 +1,14 @@
-# qr_code
+# QR Code Application
 
 A new Flutter project.
 
+# Output
+
 ## Getting Started
+
+
+![QR Code App](https://user-images.githubusercontent.com/107904613/235743023-dda7b3f2-61ac-4e1f-bb7e-0489a9da6bfe.jpeg)
+
 
 This project is a starting point for a Flutter application.
 
